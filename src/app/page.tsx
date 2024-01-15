@@ -1,6 +1,5 @@
 'use client'
 
-import './globals.css'
 import { useEffect, useState } from "react"
 import { dataSchema, type Data } from "./types/types"
 import { ZodError } from 'zod'
