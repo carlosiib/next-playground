@@ -1,5 +1,5 @@
 'use client'
-import { useState } from "react"
+import { HTMLAttributes, useState } from "react"
 import { Item } from "../types/types"
 import { twMerge } from "tailwind-merge"
 
@@ -16,15 +16,12 @@ async function getData(id: number) {
   }
 }
 
-
-interface ButtonProps {
-  children?: React.ReactNode,
+interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   itemId?: number,
   text?: string,
   styles?: string,
   handleModal?: (value: boolean) => void,
   handleId?: (id: number) => void,
-  onClick?: () => void,
 }
 
 export default function Button({ children, handleModal, handleId, onClick, itemId, styles, text = "Button", ...rest }: ButtonProps) {
