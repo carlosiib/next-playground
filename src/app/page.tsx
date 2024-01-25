@@ -67,14 +67,14 @@ export default function Home() {
         {/* Fetch status */}
         {items?.length == 0 &&
           <Message>
-            <p className="font-medium  text-lg py-4 md:py-8 md:text-2xl">
+            <p className="font-medium text-lg py-4 md:py-8 md:text-2xl">
               No data available
             </p>
           </Message>
         }
         {error.display &&
           <Message>
-            <p className="font-medium  text-lg py-4 md:py-8 md:text-2xl">
+            <p className="font-medium text-lg py-4 md:py-8 md:text-2xl">
               {error.message}
             </p>
             <Button
