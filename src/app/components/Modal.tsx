@@ -1,30 +1,28 @@
+'use client'
+
 import * as Dialog from '@radix-ui/react-dialog';
-import Button from './Button';
 import { type Data } from "../types/types"
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 interface ModalProps {
   open: boolean,
-  handleModal?: (value: boolean) => void,
   item: Data
 }
-export default function Modal({ open, handleModal, item }: ModalProps) {
+export default function Modal({ open, item }: ModalProps) {
 
-  function handleClick() {
-    if (typeof handleModal === "function") {
-      handleModal(false)
-    }
-  }
+  const router = useRouter()
 
   return (
     <Dialog.Root open={open} >
       <Dialog.Portal >
-        <Dialog.Overlay className="fixed inset-0 bg-neutral-950/[.09] animate-[overlayShow_250ms_cubic-bezier(0.16,_1,_0.3,_1)]" onClick={handleClick} />
+        <Dialog.Overlay className="fixed inset-0 bg-neutral-950/[.09] animate-[overlayShow_250ms_cubic-bezier(0.16,_1,_0.3,_1)]" onClick={() => router.push("/")} />
         <Dialog.Content className="fixed top-1/2 left-1/2 translate-y-[-50%] translate-x-[-50%] w-[90vw] max-w-[450px] max-h-[85vh] bg-white p-6 shadow-lg shadow-gray-500/50 rounded-sm animate-[contentShow_250ms_cubic-bezier(0.16,_1,_0.3,_1)]">
           <div className='flex justify-between'>
 
             <Dialog.Title className="">Edit profile</Dialog.Title>
             <Dialog.Close asChild>
-              <Button onClick={handleClick} styles="bg-transparent" aria-label="Close"> X</Button>
+              <Link href="/" className="bg-transparent px-4" aria-label="Close"> X</Link>
             </Dialog.Close>
           </div>
           <Dialog.Description className="">
@@ -34,7 +32,7 @@ export default function Modal({ open, handleModal, item }: ModalProps) {
 
           <Dialog.Close asChild >
             <div className='flex justify-end'>
-              <Button onClick={handleClick} styles="bg-black text-white" aria-label="Close"> Close</Button>
+              <Link href="/" className="bg-black text-white px-6 py-2 rounded-sm" aria-label="Close"> Close</Link>
             </div>
           </Dialog.Close>
         </Dialog.Content>
